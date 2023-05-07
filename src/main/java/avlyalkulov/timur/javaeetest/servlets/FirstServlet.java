@@ -15,6 +15,7 @@ public class FirstServlet extends HttpServlet {
         pw.println("<html><body>");
         pw.println("<h1> It is just an example! </h1>");
         pw.println("<h1> I did it! It works! </h1>");
+        pw.println ("<a href = 'https://www.youtube.com/'>Youtube</a>");
         pw.println("</body></html>");
     }
 
