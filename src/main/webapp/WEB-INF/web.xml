@@ -21,4 +21,12 @@
         <url-pattern>/hello-world-jsp</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+    <servlet-name>ParameterJSP</servlet-name>
+    <jsp-file>/parameterJSP.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+<servlet-name>ParameterJSP</servlet-name>
+<url-pattern>/parameter-jsp</url-pattern>
+</servlet-mapping>
 </web-app>
