@@ -9,7 +9,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>FirstServlet</servlet-name>
-        <url-pattern>/hello-world</url-pattern>
+        <url-pattern>/example-servlet</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -22,11 +22,20 @@
     </servlet-mapping>
 
     <servlet>
-    <servlet-name>ParameterJSP</servlet-name>
-    <jsp-file>/parameterJSP.jsp</jsp-file>
-</servlet>
-<servlet-mapping>
-<servlet-name>ParameterJSP</servlet-name>
-<url-pattern>/parameter-jsp</url-pattern>
-</servlet-mapping>
+        <servlet-name>ParameterJSP</servlet-name>
+        <jsp-file>/parameterJSP.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ParameterJSP</servlet-name>
+        <url-pattern>/parameter-jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RedirectJSP</servlet-name>
+        <jsp-file>/testJSP.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RedirectJSP</servlet-name>
+        <url-pattern>/redirect-jsp</url-pattern>
+    </servlet-mapping>
 </web-app>

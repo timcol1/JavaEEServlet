@@ -1,5 +1,6 @@
 package avlyalkulov.timur.javaeetest.servlets;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,10 +17,17 @@ public class FirstServlet extends HttpServlet {
 
         PrintWriter pw = response.getWriter();
 
-        pw.println("<html><body>");
+        pw.println("<html><title>Base Servlet</title><body>");
         pw.println("<h1> Hello it is your request name - " + name + " </h1>");
         pw.println("<h1> Hello it is your surname - " + surname + " </h1>");
         pw.println("</body></html>");
+
+        //Example of Redirect
+        //response.sendRedirect("https://www.google.com");
+        //response.sendRedirect("/testJSP.jsp");
+        //Forward  - форвард может перенаправлять, только на внутрение сервера сервера, нельзя на гугл отправлять
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/testJSP.jsp");
+        dispatcher.forward(request,response);
     }
 
     @Override
