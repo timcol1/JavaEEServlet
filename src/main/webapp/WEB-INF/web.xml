@@ -47,4 +47,23 @@
         <servlet-name>RedirectJSP</servlet-name>
         <url-pattern>/redirect-jsp</url-pattern>
     </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>TimerJSP</servlet-name>
+        <jsp-file>/timer.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TimerJSP</servlet-name>
+        <url-pattern>/timer-jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TimeServlet</servlet-name>
+        <servlet-class>avlyalkulov.timur.javaeetest.servlets.TimeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TimeServlet</servlet-name>
+        <url-pattern>/timeaction</url-pattern>
+    </servlet-mapping>
 </web-app>

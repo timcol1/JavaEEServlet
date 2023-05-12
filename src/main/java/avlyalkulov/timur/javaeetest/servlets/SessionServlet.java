@@ -12,7 +12,7 @@ public class SessionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //пример проверки корзины пользователя через сесси
-        /*HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
         Basket basket = (Basket) session.getAttribute("basket");
         String nameProduct = request.getParameter("nameProduct");
         int quantity = Integer.parseInt(request.getParameter("quantity"));
@@ -23,17 +23,17 @@ public class SessionServlet extends HttpServlet {
         }
         session.setAttribute("basket", basket);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/showBasket.jsp");
-        dispatcher.forward(request, response);*/
+        dispatcher.forward(request, response);
 
         //пример авторизации
-        HttpSession session = request.getSession();
+        /*HttpSession session = request.getSession();
         String user = (String) session.getAttribute("current_user");
         if (user == null) {
             //response для анонимного польозователя логин или регистрация
             //session.setAttribute("current_user", ID);
         } else {
             //response для авторизованого пользователя
-        }
+        }*/
     }
 
     @Override
