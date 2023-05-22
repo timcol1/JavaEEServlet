@@ -13,11 +13,6 @@ public class CheckLogin extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String url = "jdbc:postgresql://localhost:5432/jdbc-test";
         String name = "postgres";
         String pass = "1504";
@@ -28,13 +23,18 @@ public class CheckLogin extends HttpServlet {
         }
         try (Connection connection = DriverManager.getConnection(url, name, pass)) {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("Select title from shop");
+            String sentName = request.getParameter("uname");
             PrintWriter pw = response.getWriter();
-            while (resultSet.next())
-                pw.println("<p>" + resultSet.getString(1) + "</p>");
-            statement.close();
+            pw.println("<html><title>Base Servlet</title><body>");
+            pw.println("<h1> Hello it is your request name - " + sentName + " </h1>");
+            pw.println("</body></html>");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
     }
 }
