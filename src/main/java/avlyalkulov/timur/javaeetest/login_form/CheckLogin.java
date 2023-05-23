@@ -22,12 +22,22 @@ public class CheckLogin extends HttpServlet {
             throw new RuntimeException(e);
         }
         try (Connection connection = DriverManager.getConnection(url, name, pass)) {
-            Statement statement = connection.createStatement();
             String sentName = request.getParameter("uname");
+            String sentPassword = request.getParameter("psw");
             PrintWriter pw = response.getWriter();
-            pw.println("<html><title>Base Servlet</title><body>");
-            pw.println("<h1> Hello it is your request name - " + sentName + " </h1>");
-            pw.println("</body></html>");
+            PreparedStatement checkLogin = connection.prepareStatement("select user_name from users\n" +
+                    "where user_name = ? and password = ?");
+            checkLogin.setString(1, sentName);
+            checkLogin.setString(2, sentPassword);
+            ResultSet resultSet = checkLogin.executeQuery();
+            resultSet.next();
+            if (resultSet.getString(1).equals(sentName)) {
+                pw.println("<h1>You have successfully log in</h1>");
+            }
+            if (resultSet.getString(1).equals(sentName)) {
+                pw.println("<h1>You have printed wrong name or password</h1>");
+                pw.println("<a>Return to log in page</a>");
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

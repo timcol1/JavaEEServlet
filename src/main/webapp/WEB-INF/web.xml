@@ -120,12 +120,28 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>CreateAccount</servlet-name>
+        <jsp-file>/form_login/createAccount.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateAccount</servlet-name>
+        <url-pattern>/create-account</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>CheckLogin</servlet-name>
         <servlet-class>avlyalkulov.timur.javaeetest.login_form.CheckLogin</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CheckLogin</servlet-name>
         <url-pattern>/check-login</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>RegistrationAccount</servlet-name>
+        <servlet-class>avlyalkulov.timur.javaeetest.login_form.RegistrationAccount</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistrationAccount</servlet-name>
+        <url-pattern>/registration-account</url-pattern>
     </servlet-mapping>
 
 
