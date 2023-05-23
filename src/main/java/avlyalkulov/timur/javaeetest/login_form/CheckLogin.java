@@ -30,13 +30,11 @@ public class CheckLogin extends HttpServlet {
             checkLogin.setString(1, sentName);
             checkLogin.setString(2, sentPassword);
             ResultSet resultSet = checkLogin.executeQuery();
-            resultSet.next();
-            if (resultSet.getString(1).equals(sentName)) {
+            if (resultSet.next())
                 pw.println("<h1>You have successfully log in</h1>");
-            }
-            if (resultSet.getString(1).equals(sentName)) {
-                pw.println("<h1>You have printed wrong name or password</h1>");
-                pw.println("<a>Return to log in page</a>");
+            else {
+                pw.println("<h1>You have entered the wrong login or passsword</h1>");
+                pw.println("<a href = /login >Return to log in form</a>");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

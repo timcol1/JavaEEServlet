@@ -27,7 +27,7 @@
     </div>
     <br>
     <div class="container" style="background-color:#f1f1f1">
-        <span class="psw">Have account <a href="/login">click here to go to log in form?</a></span>
+        <span class="psw">Have account? <a href="/login">Click here to go to log in form</a></span>
     </div>
 </form>
 </body>
