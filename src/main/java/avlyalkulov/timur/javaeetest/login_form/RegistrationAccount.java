@@ -39,7 +39,6 @@ public class RegistrationAccount extends HttpServlet {
             printWriter.println("<h1> Hello it is your email - " + sentEmail + " </h1>");
             printWriter.println("<a href = /login> Return to login form </a>");
             printWriter.println("</body></html>");
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
