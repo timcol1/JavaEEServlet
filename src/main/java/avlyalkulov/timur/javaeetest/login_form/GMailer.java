@@ -31,7 +31,7 @@ import static javax.mail.Message.RecipientType.TO;
 public class GMailer {
 
     private static String FROM_SEND = "timur.avlyakulov1@gmail.com";
-    private static String TO_SEND = "rrggo76@gmail.com";
+    private static String TO_SEND = "denys.shemaiev@nure.ua";
     private final Gmail service;
 
     public GMailer() throws Exception {
@@ -44,7 +44,7 @@ public class GMailer {
 
     private static Credential getCredentials(final NetHttpTransport httpTransport, GsonFactory jsonFactory)
             throws IOException {
-        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(jsonFactory, new InputStreamReader(GMailer.class.getResourceAsStream("D:\\Загрузки\\client_secret_1044772913424-7l1govtdbgcbbq99asujuda3akf2mo4e.apps.googleusercontent.com.json")));
+        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(jsonFactory, new InputStreamReader(GMailer.class.getResourceAsStream("/client_secret_1044772913424-lo1bdobhqoklj7nhle8cnt0trmgo4c5q.apps.googleusercontent.com.json")));
 
         // Build flow and trigger user authorization request.
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
@@ -62,7 +62,7 @@ public class GMailer {
         Session session = Session.getDefaultInstance(props, null);
         MimeMessage email = new MimeMessage(session);
         email.setFrom(new InternetAddress(FROM_SEND));
-        email.addRecipient(TO, new InternetAddress(FROM_SEND));
+        email.addRecipient(TO, new InternetAddress(TO_SEND));
         email.setSubject(subject);
         email.setText(message);
 
@@ -89,6 +89,6 @@ public class GMailer {
     }
 
     public static void main(String[] args) throws Exception{
-        new GMailer().sendMail("A new message", "Hello it is test mail");
+        new GMailer().sendMail("Test java gmail API", "шо ты голова?");
     }
 }
