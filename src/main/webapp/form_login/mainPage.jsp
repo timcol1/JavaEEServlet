@@ -23,13 +23,13 @@
         <label for="psw"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="psw" required>
         <br><br>
-        <button type="submit">Restore</button>
-    </main>
+        <button type="submit">Login</button>
+   </main>
+</form>
     <br>
     <footer>
-        <span class="psw">Forgot <a href="/restore-pass">password?</a></span><br>
-        <span class="account">Don't have an account? <a href="/create-account">create account</a></span>
+        <span class="psw">Forgot password? <a href="/restore-pass">Restore password</a></span><br>
+        <span class="account">Don't have an account? <a href="/create-account">Create account</a></span>
     </footer>
-</form>
 </body>
 </html>

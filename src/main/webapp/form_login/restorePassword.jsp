@@ -15,16 +15,15 @@
 </head>
 <body>
 <h1 class="header">Restore Password</h1>
-<form action="${pageContext.request.contextPath}/restore-pass" method="post">
+<form action="${pageContext.request.contextPath}/restoring-pass" method="post">
   <main>
     <label for="email"><b>Email</b></label>
-    <input type="email" placeholder="Enter your email to restore password" name="email" required>
-    <button type="submit">Login</button>
+    <input type="email" placeholder="Enter your email" name="email" required>
+    <button type="submit">Restore</button>
   </main>
   <br>
   <footer>
-    <span class="psw">Forgot <a href="#">password?</a></span><br>
-    <span class="account">Don't have an account? <a href="/create-account">create account</a></span>
+    <span class="psw">Want to return to main page? <a href="/login">Click here to go to the log in form</a></span>
   </footer>
 </form>
 </body>

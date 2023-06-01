@@ -151,6 +151,14 @@
         <servlet-name>RestorePass</servlet-name>
         <url-pattern>/restore-pass</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>RestoringPass</servlet-name>
+        <servlet-class>avlyalkulov.timur.javaeetest.login_form.RestorePass</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RestoringPass</servlet-name>
+        <url-pattern>/restoring-pass</url-pattern>
+    </servlet-mapping>
 
 
 
