@@ -143,6 +143,14 @@
         <servlet-name>RegistrationAccount</servlet-name>
         <url-pattern>/registration-account</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>RestorePass</servlet-name>
+        <jsp-file>/form_login/restorePassword.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RestorePass</servlet-name>
+        <url-pattern>/restore-pass</url-pattern>
+    </servlet-mapping>
 
 
 

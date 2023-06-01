@@ -8,25 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <style type="text/css">
-        main {
-            color: white;
-            text-align: center;
-        }
-
-        .header {
-            color: white;
-            text-align: center;
-        }
-
-        .main-footer {
-            color: white;
-            text-align: center;
-        }
+    <style>
+        <%@include file="/form_login/css/style.css"%>
     </style>
     <title>Form login</title>
 </head>
-<body style="background-color:#9a6565">
+<body>
 <h1 class="header">Login Form</h1>
 <form action="${pageContext.request.contextPath}/check-login" method="post">
     <main>
@@ -36,13 +23,13 @@
         <label for="psw"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="psw" required>
         <br><br>
-        <button type="submit">Login</button>
+        <button type="submit">Restore</button>
     </main>
     <br>
-    <div class="main-footer">
-        <span class="psw">Forgot <a href="#">password?</a></span><br>
+    <footer>
+        <span class="psw">Forgot <a href="/restore-pass">password?</a></span><br>
         <span class="account">Don't have an account? <a href="/create-account">create account</a></span>
-    </div>
+    </footer>
 </form>
 </body>
 </html>

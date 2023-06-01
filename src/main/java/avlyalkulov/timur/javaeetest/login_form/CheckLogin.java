@@ -12,8 +12,8 @@ import java.sql.*;
 public class CheckLogin extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String url = "jdbc:postgresql://localhost:5432/jdbc-test";
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String url = "jdbc:postgresql://localhost:5432/login_form";
         String name = "postgres";
         String pass = "1504";
         try {
@@ -30,10 +30,11 @@ public class CheckLogin extends HttpServlet {
             checkLogin.setString(1, sentName);
             checkLogin.setString(2, sentPassword);
             ResultSet resultSet = checkLogin.executeQuery();
-            if (resultSet.next())
+            if (resultSet.next()) {
                 pw.println("<h1>You have successfully log in</h1>");
-            else {
-                pw.println("<h1>You have entered the wrong login or passsword</h1>");
+                pw.println("<a href = /login >Return to log in form</a>");
+            } else {
+                pw.println("<h1>You have entered the wrong login or password</h1>");
                 pw.println("<a href = /login >Return to log in form</a>");
             }
         } catch (SQLException e) {

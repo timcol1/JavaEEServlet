@@ -8,12 +8,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <style>
+        <%@include file="/form_login/css/style.css"%>
+    </style>
     <title>Registration</title>
 </head>
-<body style="background-color:#f1f1f1">
-<h1>Registration Form</h1>
+<body>
+<h1 class = "header">Registration Form</h1>
 <form action="${pageContext.request.contextPath}/registration-account" method="post">
-    <div class="container">
+    <main>
         <label for="uname"><b>Username</b></label>
         <input type="text" placeholder="Enter Username" name="uname" required>
         <br><br>
@@ -24,11 +27,11 @@
         <input type="email" placeholder="Enter your email" name="email" required>
         <br><br>
         <button type="submit">Registrate account</button>
-    </div>
+    </main>
     <br>
-    <div class="container" style="background-color:#f1f1f1">
+    <footer>
         <span class="psw">Have account? <a href="/login">Click here to go to log in form</a></span>
-    </div>
+    </footer>
 </form>
 </body>
 </html>

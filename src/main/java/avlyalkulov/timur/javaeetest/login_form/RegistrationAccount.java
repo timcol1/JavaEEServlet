@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 public class RegistrationAccount extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String url = "jdbc:postgresql://localhost:5432/jdbc-test";
+        String url = "jdbc:postgresql://localhost:5432/login_form";
         String name = "postgres";
         String pass = "1504";
         try {
