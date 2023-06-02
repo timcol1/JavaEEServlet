@@ -5,7 +5,7 @@
          version="5.0">
     <servlet>
         <servlet-name>FirstServlet</servlet-name>
-        <servlet-class>avlyalkulov.timur.javaeetest.servlets.FirstServlet</servlet-class>
+        <servlet-class>avlyalkulov.timur.javaeetest.servlets.ForwardRedirect</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>FirstServlet</servlet-name>

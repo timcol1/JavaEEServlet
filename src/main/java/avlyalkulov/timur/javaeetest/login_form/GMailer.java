@@ -15,6 +15,7 @@ import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.model.Message;
 import org.apache.commons.codec.binary.Base64;
 
+import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -31,7 +32,6 @@ import static javax.mail.Message.RecipientType.TO;
 public class GMailer {
 
     private static String FROM_SEND = "timur.avlyakulov1@gmail.com";
-    private static String TO_SEND = "denys.shemaiev@nure.ua";
     private final Gmail service;
 
     public GMailer() throws Exception {
@@ -57,12 +57,12 @@ public class GMailer {
         return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
     }
 
-    private void sendMail(String subject, String message) throws Exception {
+    public void sendMail(String mail, String subject, String message) throws MessagingException, IOException {
         Properties props = new Properties();
         Session session = Session.getDefaultInstance(props, null);
         MimeMessage email = new MimeMessage(session);
         email.setFrom(new InternetAddress(FROM_SEND));
-        email.addRecipient(TO, new InternetAddress(TO_SEND));
+        email.addRecipient(TO, new InternetAddress(mail));
         email.setSubject(subject);
         email.setText(message);
 
@@ -88,7 +88,8 @@ public class GMailer {
         }
     }
 
-    public static void main(String[] args) throws Exception{
-        new GMailer().sendMail("Test java gmail API", "шо ты голова?");
+    public static void main(String[] args) throws Exception {
+        String mail = "rrggo76@gmail.com";
+        new GMailer().sendMail(mail, "Test java gmail API", "It is working?");
     }
 }
