@@ -1,5 +1,6 @@
 package avlyalkulov.timur.javaeetest.login_form;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,19 +14,21 @@ import java.util.Random;
 
 public class RestorePass extends HttpServlet {
     String truePass;
+    String url = "jdbc:postgresql://localhost:5432/login_form";
+    String name = "postgres";
+    String pass = "1504";
+    String email;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String url = "jdbc:postgresql://localhost:5432/login_form";
-        String name = "postgres";
-        String pass = "1504";
+
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
         try (Connection connection = DriverManager.getConnection(url, name, pass)) {
-            String email = request.getParameter("email");
+            email = request.getParameter("email");
             PrintWriter pw = response.getWriter();
             PreparedStatement checkLogin = connection.prepareStatement("select user_name from users\n" +
                     "where email = ?");
@@ -43,13 +46,13 @@ public class RestorePass extends HttpServlet {
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
-                pw.println("<h1>An email has been sent to your email to reset your password</h1>");
+                pw.println("<h1>Code has been sent to your email to reset your password</h1>");
                 pw.println("<form>\n" +
                         "    <main>\n" +
                         "        <label for=\"code\"><b>Enter your code</b></label>\n" +
                         "        <input type=\"text\" placeholder=\"Enter code\" name=\"code\" required>\n" +
                         "        <br><br>\n" +
-                        "        <button type=\"submit\">Check password</button>\n" +
+                        "        <button type=\"submit\">Check code</button>\n" +
                         "   </main>\n" +
                         "</form>");
             } else {
@@ -65,22 +68,37 @@ public class RestorePass extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter pw = new PrintWriter(response.getWriter());
         String code = request.getParameter("code");
-        if (code.equals(truePass)) {
-            pw.println("<html><title>Restore Pass</title><body>");
-            pw.println("<h1>Please enter the new password</h1>");
-            pw.println("<form>\n" +
-                    "    <main>\n" +
-                    "        <label for=\"code\"><b>Enter your code</b></label>\n" +
-                    "        <input type=\"text\" placeholder=\"Enter code\" name=\"code\" required>\n" +
-                    "        <br><br>\n" +
-                    "        <button type=\"submit\">Check password</button>\n" +
-                    "   </main>\n" +
-                    "</form>");
-            pw.println("</body></html>");
+        String password = request.getParameter("password");
+        if (password != null) {
+            try (Connection connection = DriverManager.getConnection(url, name, pass);
+                 PreparedStatement changePassword = connection.prepareStatement("Update users set password = ? where email = ?")) {
+                changePassword.setString(1, password);
+                changePassword.setString(2, email);
+                changePassword.executeUpdate();
+                pw.println("<html><title>Password</title><body>");
+                pw.println("<h1> Your password was successfully restored</h1>");
+                pw.println("</body></html>");
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         } else {
-            pw.println("<html><title>Restore Pass</title><body>");
-            pw.println("<h1> You enter the wrong value </h1>");
-            pw.println("</body></html>");
+            if (code.equals(truePass)) {
+                pw.println("<html><title>Restore Pass</title><body>");
+                pw.println("<h1>Please enter the new password</h1>");
+                pw.println("<form>" +
+                        "    <main>\n" +
+                        "        <label for=\"password\"><b>Enter your new password</b></label>\n" +
+                        "        <input type=\"text\" placeholder=\"Enter new password\" name=\"password\" required>\n" +
+                        "        <br><br>\n" +
+                        "        <button type=\"submit\">Change password</button>\n" +
+                        "   </main>\n" +
+                        "</form>");
+                pw.println("</body></html>");
+            } else {
+                pw.println("<html><title>Restore Pass</title><body>");
+                pw.println("<h1> You enter the wrong value </h1>");
+                pw.println("</body></html>");
+            }
         }
     }
 }
